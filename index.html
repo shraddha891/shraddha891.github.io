@@ -122,7 +122,7 @@ header.scrolled{background:var(--header-bg);backdrop-filter:blur(14px);-webkit-b
 .menu a::before{content:'0' counter(m);font-family:var(--mono);font-size:.9rem;color:var(--teal)}
 .menu a:hover{color:var(--text)}
 .menu-open .menu a{transform:none}
-.menu-open .menu li:nth-child(2) a{transition-delay:.04s}.menu-open .menu li:nth-child(3) a{transition-delay:.08s}.menu-open .menu li:nth-child(4) a{transition-delay:.12s}.menu-open .menu li:nth-child(5) a{transition-delay:.16s}.menu-open .menu li:nth-child(6) a{transition-delay:.2s}
+.menu-open .menu li:nth-child(2) a{transition-delay:.04s}.menu-open .menu li:nth-child(3) a{transition-delay:.08s}.menu-open .menu li:nth-child(4) a{transition-delay:.12s}.menu-open .menu li:nth-child(5) a{transition-delay:.16s}.menu-open .menu li:nth-child(6) a{transition-delay:.2s}.menu-open .menu li:nth-child(7) a{transition-delay:.24s}
 .menu-foot{margin-top:40px;display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
 .menu-foot a{font-family:var(--font);font-size:.95rem;transform:none;color:var(--muted)}
 .menu-foot a::before{content:none}
@@ -335,13 +335,30 @@ section.sec{padding:120px 0 0;scroll-margin-top:60px}
 .step::before{content:'';position:absolute;left:-34px;top:5px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--teal)}
 .step.now::before{background:var(--teal);box-shadow:0 0 0 6px rgba(45,212,191,.15)}
 .when{font-family:var(--mono);font-size:.82rem;color:var(--teal);letter-spacing:.06em}
-.step h3{font-family:var(--display);font-weight:600;font-size:1.35rem;margin-top:4px}
+.step h3{font-family:var(--display);font-weight:800;letter-spacing:-.015em;font-size:1.35rem;margin-top:4px}
 .org{color:var(--muted);margin-bottom:12px}
 .step p{color:var(--text2);max-width:780px}
 .step ul{list-style:none;display:grid;gap:10px;margin-top:12px;max-width:820px}
 .step li{position:relative;padding-left:20px;color:var(--text2)}
 .step li::before{content:'';position:absolute;left:0;top:.72em;width:8px;height:2px;border-radius:2px;background:var(--teal)}
 .step li b{color:var(--text);font-weight:600}
+
+/* Education */
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.edu-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:24px;padding:28px;background:var(--card-bg);display:flex;flex-direction:column;gap:6px;transition:border-color .25s,transform .25s}
+.edu-card::after{content:'';position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.16),transparent 70%);pointer-events:none}
+.edu-card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.edu-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.edu-ico{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--grad);color:#04080A}
+.edu-ico svg{width:24px;height:24px}
+.edu-year{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--teal)}
+.edu-card h3{font-family:var(--display);font-weight:800;font-size:1.45rem;letter-spacing:-.02em;line-height:1.2}
+.edu-field{color:var(--text);font-weight:500}
+.edu-school{color:var(--muted);font-size:.95rem}
+.edu-score{display:flex;align-items:baseline;gap:8px;margin-top:16px;padding-top:16px;border-top:1px dashed var(--line-strong)}
+.edu-score b{font-family:var(--display);font-weight:800;font-size:2rem;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.edu-score span{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+@media (max-width:760px){.edu{grid-template-columns:1fr;gap:12px}.edu-card{padding:22px;border-radius:20px}.edu-card h3{font-size:1.25rem}}
 
 /* Certifications */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
@@ -537,7 +554,8 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
     <ol>
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
-      <li><a href="#journey">Journey</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#stack">Stack</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -748,11 +766,11 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
   </div>
 </section>
 
-<!-- ================= 03 Journey ================= -->
-<section class="sec" id="journey">
+<!-- ================= 03 Experience ================= -->
+<section class="sec" id="experience">
   <div class="wrap">
-    <div class="eyebrow rise"><span class="num">03</span><span class="ttl">Journey</span></div>
-    <h2 class="h2 rise">Career &amp; education</h2>
+    <div class="eyebrow rise"><span class="num">03</span><span class="ttl">Experience</span></div>
+    <h2 class="h2 rise">Where I've worked</h2>
     <div class="journey">
       <div class="step now rise">
         <div class="when">Jun 2026 – Present</div>
@@ -768,22 +786,12 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
         </ul>
       </div>
       <div class="step rise">
-        <div class="when">2026</div>
-        <h3>B.E. Computer Engineering</h3>
-        <div class="org">Indala College of Engineering · CGPA 8.14/10</div>
-      </div>
-      <div class="step rise">
         <div class="when">Nov 2025 – Jan 2026</div>
         <h3>Data Analytics &amp; AI/ML Intern</h3>
         <div class="org">Vareli Tecnac Pvt. Ltd., Pune</div>
         <ul>
           <li>Cleaned and explored datasets with Pandas and NumPy, built and tuned prediction and classification models with Scikit-learn and TensorFlow, and presented findings with Matplotlib and Seaborn.</li>
         </ul>
-      </div>
-      <div class="step rise">
-        <div class="when">2023</div>
-        <h3>Diploma in Computer Engineering</h3>
-        <div class="org">Amrutvahini Polytechnic, Sangamner · 77.65%</div>
       </div>
       <div class="step rise">
         <div class="when">Jul 2022 – Mar 2023</div>
@@ -797,10 +805,34 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
   </div>
 </section>
 
-<!-- ================= 04 Certifications ================= -->
+<!-- ================= 04 Education ================= -->
+<section class="sec" id="education">
+  <div class="wrap">
+    <div class="eyebrow rise"><span class="num">04</span><span class="ttl">Education</span></div>
+    <h2 class="h2 rise">What I studied</h2>
+    <div class="edu rise">
+      <article class="edu-card">
+        <div class="edu-top"><span class="edu-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M2 9l10-5 10 5-10 5L2 9Zm4 2.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.8M22 9v6"/></svg></span><span class="edu-year">Graduated 2026</span></div>
+        <h3>Bachelor of Engineering</h3>
+        <div class="edu-field">Computer Engineering</div>
+        <div class="edu-school">Indala College of Engineering</div>
+        <div class="edu-score"><b>8.14</b><span>/ 10 CGPA</span></div>
+      </article>
+      <article class="edu-card">
+        <div class="edu-top"><span class="edu-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 19.5V5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2Zm0 0A2 2 0 0 0 6 21.5h12M8 7h6"/></svg></span><span class="edu-year">Completed 2023</span></div>
+        <h3>Diploma</h3>
+        <div class="edu-field">Computer Engineering</div>
+        <div class="edu-school">Amrutvahini Polytechnic, Sangamner</div>
+        <div class="edu-score"><b>77.65%</b><span>aggregate</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 Certifications ================= -->
 <section class="sec" id="certifications">
   <div class="wrap">
-    <div class="eyebrow rise"><span class="num">04</span><span class="ttl">Certifications</span></div>
+    <div class="eyebrow rise"><span class="num">05</span><span class="ttl">Certifications</span></div>
     <h2 class="h2 rise">Licenses &amp; certifications</h2>
     <div class="stats rise">
       <div class="stat"><b data-count="7">7</b><span>Certificates</span></div>
@@ -826,10 +858,10 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
   </div>
 </section>
 
-<!-- ================= 05 Stack ================= -->
+<!-- ================= 06 Stack ================= -->
 <section class="sec" id="stack">
   <div class="wrap">
-    <div class="eyebrow rise"><span class="num">05</span><span class="ttl">Tech stack</span></div>
+    <div class="eyebrow rise"><span class="num">06</span><span class="ttl">Tech stack</span></div>
     <h2 class="h2 rise">What I build with</h2>
     <div class="ts rise">
       <div class="ts-row" role="group" aria-label="Frontend">
@@ -866,10 +898,10 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
   </div>
 </section>
 
-<!-- ================= 06 Contact ================= -->
+<!-- ================= 07 Contact ================= -->
 <section class="contact" id="contact">
   <div class="wrap">
-    <div class="eyebrow rise"><span class="num">06</span><span class="ttl">Contact</span></div>
+    <div class="eyebrow rise"><span class="num">07</span><span class="ttl">Contact</span></div>
     <h2 class="rise">Let's build something<br><span class="grad-text">together.</span></h2>
     <p class="rise">I'm open to full stack and backend roles in Pune, hybrid or remote.</p>
     <div class="btns rise">
