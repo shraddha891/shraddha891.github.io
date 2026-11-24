@@ -393,7 +393,7 @@ a.ts-item:hover{transform:translateY(-5px);border-color:var(--line-strong);box-s
 .contact h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;font-size:clamp(2.2rem,6.4vw,4.8rem);line-height:1.05;margin-bottom:18px;position:relative}
 .contact p{color:var(--muted);font-size:1.1rem;position:relative}
 .btns{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:36px;position:relative}
-.btn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:999px;border:1px solid var(--line-strong);background:var(--btn-bg);font-weight:500;text-decoration:none;transition:all .2s}
+.btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;height:50px;padding:0 22px;border-radius:999px;border:1px solid var(--line-strong);background:var(--btn-bg);font-weight:500;text-decoration:none;transition:all .2s}
 .btn:hover{border-color:var(--mint);transform:translateY(-2px)}
 .btn svg{width:17px;height:17px}
 .btn.primary{background:var(--grad);color:#04080A;border:0}
@@ -481,7 +481,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
   .name{font-size:clamp(2.4rem,12.5vw,3rem)}
   .hero-foot{flex-direction:row}
   .btns .btn{flex:1 1 calc(50% - 10px);justify-content:center}
-  .btns .btn.primary{flex-basis:100%}
+  .btns .btn.primary,.btns .btn.tel{flex-basis:100%}
 }
 
 /* Motion controls */
@@ -506,6 +506,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
   <symbol id="i-dl" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v12H9zM5 15V3h10"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
 </svg>
 
@@ -545,6 +546,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
       <a href="https://github.com/shraddha891" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/shraddha-torkad" target="_blank" rel="noopener">LinkedIn</a>
       <a href="mailto:shraddhatorkad293@gmail.com">shraddhatorkad293@gmail.com</a>
+      <a href="tel:+917083817746">+91 70838 17746</a>
     </div>
   </div>
 </nav>
@@ -573,6 +575,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
         <a href="https://linkedin.com/in/shraddha-torkad" target="_blank" rel="noopener" aria-label="LinkedIn"><svg aria-hidden="true"><use href="#i-in"/></svg></a>
         <a href="https://github.com/shraddha891" target="_blank" rel="noopener" aria-label="GitHub"><svg aria-hidden="true"><use href="#i-gh"/></svg></a>
         <a href="mailto:shraddhatorkad293@gmail.com" aria-label="Email"><svg aria-hidden="true"><use href="#i-mail"/></svg></a>
+        <a href="tel:+917083817746" aria-label="Call +91 70838 17746"><svg aria-hidden="true"><use href="#i-phone"/></svg></a>
       </div>
       <div class="resume-wrap">
         <a class="resume-link" href="Shraddha-Torkad-Resume.pdf" data-resume>RESUME <svg aria-hidden="true"><use href="#i-doc"/></svg></a>
@@ -872,6 +875,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
     <div class="btns rise">
       <button class="btn primary" type="button" id="copyEmail" data-email="shraddhatorkad293@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy email</span></button>
       <a class="btn" href="mailto:shraddhatorkad293@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email me</a>
+      <a class="btn tel" href="tel:+917083817746"><svg aria-hidden="true"><use href="#i-phone"/></svg>+91 70838 17746</a>
       <a class="btn" href="https://linkedin.com/in/shraddha-torkad" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-in"/></svg>LinkedIn</a>
       <a class="btn" href="Shraddha-Torkad-Resume.pdf" data-resume><svg aria-hidden="true"><use href="#i-doc"/></svg>Resume</a>
     </div>
@@ -1014,7 +1018,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
     about: [['q', 'tell me about shraddha'], ['tool', 'Read', '(resume.pdf)'], ['sub', '\u2514 2 pages \u00b7 experience, projects, skills'], ['ans', 'Full stack developer at Onestaff.ai in Pune. Builds React and Next.js frontends and FastAPI, Django and Node.js APIs on PostgreSQL and Redis, including an ERP that runs live for a client.']],
     hiring: [['q', 'is she open to work?'], ['tool', 'Read', '(availability.json)'], ['sub', '\u2514 status, location, timing'], ['ans', 'Yes. Open to full stack and backend roles. Based in Pune and open to on-site, hybrid or remote work. Happy to discuss timelines.']],
     best: [['q', "what's her strongest project?"], ['tool', 'Search', '(projects --sort impact)'], ['sub', '\u2514 1 live client project'], ['ans', 'Braco ERP on OneMail: a Next.js and Prisma app that a client\'s sales, accounts and dispatch teams use every day, with Gmail and IMAP sync, encrypted credentials and an AI assistant built on the Claude API.']],
-    contact: [['q', 'how do I reach her?'], ['tool', 'Read', '(contact.json)'], ['sub', '\u2514 email, LinkedIn, resume'], ['ans', 'shraddhatorkad293@gmail.com \u00b7 linkedin.com/in/shraddha-torkad. Or press Resume at the top to view and download her resume.']]
+    contact: [['q', 'how do I reach her?'], ['tool', 'Read', '(contact.json)'], ['sub', '\u2514 email, phone, LinkedIn, resume'], ['ans', 'shraddhatorkad293@gmail.com \u00b7 +91 70838 17746 \u00b7 linkedin.com/in/shraddha-torkad. Or press Resume at the top to view and download her resume.']]
   };
   var body = document.getElementById('termBody');
   var run = 0;
