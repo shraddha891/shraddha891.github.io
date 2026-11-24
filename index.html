@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{if(localStorage.getItem('seenIntro'))document.documentElement.classList.add('no-intro');}catch(e){}try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <style>
 :root{
   --bg:#04080A; --bg2:#071013; --surface:rgba(16,30,34,.55); --surface-solid:#0B171A;
@@ -80,6 +80,7 @@ a{color:inherit} img{max-width:100%;height:auto;display:block} button{font:inher
 .intro-screen{display:none}
 .js .intro-screen{display:grid;place-items:center;position:fixed;inset:0;z-index:100;background:#E6F2F0;color:#04080A;transition:transform .9s cubic-bezier(.76,0,.24,1)}
 .intro-screen.done{transform:translateY(-100%)}
+.js.no-intro .intro-screen{display:none}
 .intro-word{display:flex;gap:.55em;font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,3vw,1.8rem)}
 .intro-word span{opacity:0;transform:translateY(10px);animation:letter .5s forwards;animation-delay:calc(var(--n) * 70ms)}
 @keyframes letter{to{opacity:1;transform:none}}
@@ -114,6 +115,7 @@ header.scrolled{background:var(--header-bg);backdrop-filter:blur(14px);-webkit-b
 /* Menu overlay */
 .menu{position:fixed;inset:0;z-index:45;background:var(--menu-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 .menu-open .menu{opacity:1;visibility:visible}
+.menu{overflow:hidden}.menu .wrap{width:100%}.menu-foot{overflow-wrap:anywhere}
 .menu ol{list-style:none;counter-reset:m}
 .menu li{counter-increment:m;overflow:hidden}
 .menu a{display:flex;align-items:baseline;gap:18px;text-decoration:none;font-family:var(--display);font-size:clamp(2rem,6vw,3.8rem);font-weight:600;line-height:1.25;color:var(--muted);transition:color .2s;transform:translateY(100%);transition:transform .5s cubic-bezier(.2,.7,.2,1),color .2s}
@@ -167,6 +169,9 @@ header.scrolled{background:var(--header-bg);backdrop-filter:blur(14px);-webkit-b
 .resume-link{display:inline-flex;align-items:center;gap:14px;font-family:var(--display);font-size:1.05rem;letter-spacing:.32em;color:var(--muted);text-decoration:none;transition:color .2s}
 .resume-link:hover{color:var(--text)}
 .resume-link svg{width:18px;height:18px}
+.resume-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.updated{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--faint);font-weight:400}
+.viewer-head .updated{margin-left:8px}
 
 /* ---------- Terminal ---------- */
 .term-sec{position:relative;z-index:3;margin-top:-30px}
@@ -211,7 +216,7 @@ section.sec{padding:120px 0 0;scroll-margin-top:60px}
 @media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:20px}}
 
 /* ID badge */
-.badge-zone{position:relative;display:flex;justify-content:center;padding-top:0;perspective:1000px}
+.badge-zone{position:relative;display:flex;justify-content:center;padding:0 0 40px;perspective:1000px;overflow-x:clip;overflow-y:visible}
 .swing{transform-origin:50% -120px;animation:swing 6s ease-in-out infinite;width:min(380px,100%)}
 @keyframes swing{0%,100%{transform:rotate(-1.8deg)}50%{transform:rotate(1.8deg)}}
 .strap{position:relative;height:120px;margin:0 auto;width:110px}
@@ -414,6 +419,71 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
 .viewer-pages img{width:100%;max-width:820px;background:#fff;border-radius:6px}
 @media (max-width:600px){dialog.viewer{width:100vw;height:100dvh;max-height:100dvh}.viewer-box{border-radius:0;border:0}.viewer-pages{padding:10px}.hide-sm{display:none}}
 
+/* ---------- Tablet & phone ---------- */
+@media (max-width:900px){
+  section.sec{padding-top:96px}
+  .badge-zone{margin-top:24px}
+}
+@media (max-width:760px){
+  .wrap{padding:0 18px}
+  .bar{height:64px}
+  .round,.burger{width:42px;height:42px}
+  .head-actions{gap:8px}
+  .hero{min-height:auto;padding:104px 0 44px}
+  .hello{font-size:1rem}
+  .an{margin:22px 0 4px;font-size:1rem}
+  .mq-row span{font-size:clamp(1.6rem,8vw,2.4rem)}
+  .hero-foot{margin-top:28px}
+  .socials{gap:22px}
+  .socials svg{width:24px;height:24px}
+  .resume-link{font-size:.92rem;letter-spacing:.24em;gap:10px}
+  .term-sec{margin-top:0}
+  .term{border-radius:18px}
+  .term-body{min-height:220px;font-size:.84rem;line-height:1.7}
+  section.sec{padding-top:80px}
+  .eyebrow{margin-bottom:18px}
+  .eyebrow .num{width:36px;height:36px;font-size:.76rem}
+  .eyebrow .ttl{font-size:.82rem;letter-spacing:.18em}
+  .h2{margin-bottom:28px}
+  .about-lead{font-size:1.08rem;margin-bottom:22px}
+  .swing{width:min(340px,100%)}
+  .strap{height:90px}
+  .card{padding:20px 20px 22px;border-radius:22px}
+  .perf{margin:0 -20px}
+  .avatar{width:58px;height:58px;font-size:1.1rem}
+  .who strong{font-size:1.1rem}
+  .proj{margin-bottom:18px}
+  .proj-head{gap:12px}
+  .proj p{font-size:.98rem}
+  .more a{padding:14px 0}
+  .cta-line{padding:20px;margin-top:28px}
+  .cta-line p{font-size:1rem}
+  .journey{padding-left:28px}
+  .step{padding-bottom:34px}
+  .step::before{left:-28px}
+  .step h3{font-size:1.15rem}
+  .stats{gap:10px}
+  .stat{padding:16px}
+  .certs{grid-template-columns:1fr;gap:12px}
+  .cert{padding:18px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -18px 18px;padding:0 18px}
+  .filters::-webkit-scrollbar{display:none}
+  .filter{flex-shrink:0}
+  .contact{padding:96px 0 84px}
+  .btns{gap:10px}
+  .btn{height:46px;padding:0 18px}
+  .menu a{font-size:clamp(1.8rem,9vw,2.6rem)}
+}
+@media (max-width:420px){
+  .term-top .dots{display:none}
+  .tab{padding:6px 8px;font-size:.78rem}
+  .tabs{gap:4px}
+  .name{font-size:clamp(2.4rem,12.5vw,3rem)}
+  .hero-foot{flex-direction:row}
+  .btns .btn{flex:1 1 calc(50% - 10px);justify-content:center}
+  .btns .btn.primary{flex-basis:100%}
+}
+
 /* Motion controls */
 .paused *,.paused *::before,.paused *::after{animation-play-state:paused!important}
 @media (prefers-reduced-motion:reduce){
@@ -504,7 +574,10 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
         <a href="https://github.com/shraddha891" target="_blank" rel="noopener" aria-label="GitHub"><svg aria-hidden="true"><use href="#i-gh"/></svg></a>
         <a href="mailto:shraddhatorkad293@gmail.com" aria-label="Email"><svg aria-hidden="true"><use href="#i-mail"/></svg></a>
       </div>
-      <a class="resume-link" href="Shraddha-Torkad-Resume.pdf" data-resume>RESUME <svg aria-hidden="true"><use href="#i-doc"/></svg></a>
+      <div class="resume-wrap">
+        <a class="resume-link" href="Shraddha-Torkad-Resume.pdf" data-resume>RESUME <svg aria-hidden="true"><use href="#i-doc"/></svg></a>
+        <span class="updated">Updated Nov 2026</span>
+      </div>
     </div>
   </div>
 </section>
@@ -516,8 +589,8 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
       <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="tabs" role="tablist" aria-label="Ask about Shraddha">
         <button class="tab" role="tab" aria-selected="true" data-tab="about">about</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="work">work</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="stack">stack</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="hiring">hiring</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="best">best work</button>
         <button class="tab" role="tab" aria-selected="false" data-tab="contact">contact</button>
       </div>
     </div>
@@ -554,7 +627,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
             <div><dt>Based in</dt><dd>Pune, India · <span class="clock" id="clock">--:--</span> IST</dd></div>
             <div><dt>Currently</dt><dd>Python Developer, Onestaff.ai</dd></div>
             <div><dt>Building</dt><dd>Braco ERP on OneMail, live for a client</dd></div>
-            <div><dt>Open to</dt><dd>Full stack and backend roles</dd></div>
+            <div><dt>Open to</dt><dd>Full stack &amp; backend roles · Pune, hybrid or remote</dd></div>
           </dl>
           <div class="chips"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span></div>
         </div>
@@ -795,7 +868,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
   <div class="wrap">
     <div class="eyebrow rise"><span class="num">06</span><span class="ttl">Contact</span></div>
     <h2 class="rise">Let's build something<br><span class="grad-text">together.</span></h2>
-    <p class="rise">I'm open to full stack and backend developer roles.</p>
+    <p class="rise">I'm open to full stack and backend roles in Pune, hybrid or remote.</p>
     <div class="btns rise">
       <button class="btn primary" type="button" id="copyEmail" data-email="shraddhatorkad293@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy email</span></button>
       <a class="btn" href="mailto:shraddhatorkad293@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email me</a>
@@ -814,7 +887,7 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
 <dialog class="viewer" id="resumeDlg" aria-labelledby="resumeTitle">
   <div class="viewer-box">
     <div class="viewer-head">
-      <strong id="resumeTitle">Resume · Shraddha Torkad</strong>
+      <strong id="resumeTitle">Resume · Shraddha Torkad <span class="updated">Updated Nov 2026</span></strong>
       <div class="acts">
         <a class="btn primary" href="Shraddha-Torkad-Resume.pdf" download="Shraddha-Torkad-Resume.pdf"><svg aria-hidden="true"><use href="#i-dl"/></svg>Download<span class="hide-sm">&nbsp;PDF</span></a>
         <button class="x" type="button" id="closeResume" aria-label="Close resume"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
@@ -835,7 +908,9 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
   // Intro screen
   var intro = document.getElementById('introScreen');
   function endIntro() { intro.classList.add('done'); setTimeout(function () { intro.style.display = 'none'; }, 950); }
-  if (reduce) { intro.style.display = 'none'; } else { setTimeout(endIntro, 1300); }
+  var seen = root.classList.contains('no-intro');
+  if (reduce || seen) { intro.style.display = 'none'; } else { setTimeout(endIntro, 1300); }
+  try { localStorage.setItem('seenIntro', '1'); } catch (e) {}
 
   // Header + menu
   var header = document.getElementById('top');
@@ -936,10 +1011,10 @@ dialog.viewer::backdrop{background:rgba(2,6,8,.75);backdrop-filter:blur(6px);-we
 
   // Terminal Q&A
   var scripts = {
-    about: [['q', 'tell me about shraddha'], ['tool', 'Read', '(resume.pdf)'], ['sub', '└ 2 pages · experience, projects, skills'], ['ans', 'Full stack developer at Onestaff.ai in Pune. Builds React and Next.js frontends and FastAPI, Django and Node.js APIs on PostgreSQL and Redis, including an ERP that runs live for a client.']],
-    work: [['q', 'what has she shipped?'], ['tool', 'Search', '(projects)'], ['sub', '└ 4 featured · 6 more on GitHub'], ['ans', 'Braco ERP on OneMail (live for a client), OneHR, Loan EMI Tracker and an ATS resume screener. Scroll to 02 for the details.']],
-    stack: [['q', 'what does she work with?'], ['tool', 'Grep', '(package.json, requirements.txt)'], ['sub', '└ frontend, backend, data, delivery'], ['ans', 'React · Next.js · TypeScript · FastAPI · Django · Node.js · PostgreSQL · Prisma · Redis · Docker · GitHub Actions']],
-    contact: [['q', 'how do I reach her?'], ['tool', 'Read', '(contact.json)'], ['sub', '└ email, LinkedIn, resume'], ['ans', 'shraddhatorkad293@gmail.com · linkedin.com/in/shraddha-torkad. Open to full stack and backend roles.']]
+    about: [['q', 'tell me about shraddha'], ['tool', 'Read', '(resume.pdf)'], ['sub', '\u2514 2 pages \u00b7 experience, projects, skills'], ['ans', 'Full stack developer at Onestaff.ai in Pune. Builds React and Next.js frontends and FastAPI, Django and Node.js APIs on PostgreSQL and Redis, including an ERP that runs live for a client.']],
+    hiring: [['q', 'is she open to work?'], ['tool', 'Read', '(availability.json)'], ['sub', '\u2514 status, location, timing'], ['ans', 'Yes. Open to full stack and backend roles. Based in Pune and open to on-site, hybrid or remote work. Happy to discuss timelines.']],
+    best: [['q', "what's her strongest project?"], ['tool', 'Search', '(projects --sort impact)'], ['sub', '\u2514 1 live client project'], ['ans', 'Braco ERP on OneMail: a Next.js and Prisma app that a client\'s sales, accounts and dispatch teams use every day, with Gmail and IMAP sync, encrypted credentials and an AI assistant built on the Claude API.']],
+    contact: [['q', 'how do I reach her?'], ['tool', 'Read', '(contact.json)'], ['sub', '\u2514 email, LinkedIn, resume'], ['ans', 'shraddhatorkad293@gmail.com \u00b7 linkedin.com/in/shraddha-torkad. Or press Resume at the top to view and download her resume.']]
   };
   var body = document.getElementById('termBody');
   var run = 0;
